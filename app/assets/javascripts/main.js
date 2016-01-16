@@ -24,37 +24,25 @@ function set_item(data){
 
   data.face.map(function(face){
 
-    var type = [1,2,3,4];
-    type.map(function(){
+    var f = {
+      width: data.img_width * (face.position.width / 100), //px
+      height: data.img_height * (face.position.height / 100), //px
+    }
 
-      var f = {
-        width: data.img_width * (face.position.width / 100), //px
-        height: data.img_height * (face.position.height / 100), //px
-      }
-
-
-      var image = $("<div>").css({
-        position: 'absolute',
-        top: data.img_width * (face.position.center.x / 100) - 250,
-        left: data.img_height * (face.position.center.y / 100) - 250,
-        width: 500,
-        height: 500,
-        transform: "rotate(" + face.attribute.pose.roll_angle.value + "deg)",
-        background: 'red',
-        opacity: 0.5});
-
-
-      var item = $('<img>').attr({
-        src: image,
-      }).css({
-        position: 'absolute',
-        transform: "rotate(" + face.attribute.pose.roll_angle + "deg)"
-      });
-
-      icontainer.append(image);
-      // icontainer.append(item);
+    var item = $("<img>").attr({
+      src: "/mask01.png"
+    })
+    .css({
+      position: 'absolute',
+      top: data.img_width * (face.position.center.x / 100) - 250,
+      left: data.img_height * (face.position.center.y / 100) - 250,
+      width: 500,
+      height: 500,
+      transform: "rotate(" + face.attribute.pose.roll_angle.value + "deg)",
     });
 
+
+    icontainer.append(item);
   });
 }
 
@@ -68,7 +56,7 @@ function main(){
 }
 
 $(function(){
-  $("#img").bind('load', function (){
+  $("#img").bind('load', function(){
     var data = $.parseJSON(img.attr('data-json'));
     main(data);
   });
