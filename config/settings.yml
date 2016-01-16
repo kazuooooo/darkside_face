@@ -1,0 +1,12 @@
+defaults: &defaults
+  api_key: 6d4bc22f005b45222c77e4e41ee05910
+  api_secret: i432zc2DWSNNT0V-FfCeDWEWbv0mOoeg
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -29,4 +29,18 @@ class PageController < ApplicationController
   def view
     @image = Image.find(params[:id])
   end
+
+  def face_detect(image_url)
+    url = URI.parse("http://apius.faceplusplus.com/v2/detection/detect?api_key=#{Settings.api_key}&api_secret=#{Settings.api_secret}&url=#{image_url}")
+    req = Net::HTTP::Get.new(url.to_s)
+    res = Net::HTTP.start(url.host, url.port) {|http|
+      http.request(req)
+    }
+    if res.code == '200'
+      result = JSON.parse(res.body)
+    else
+      puts "OMG!! #{res.code} #{res.message}"
+    end
+    result
+  end
 end
