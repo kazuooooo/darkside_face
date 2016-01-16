@@ -1,3 +1,4 @@
+require 'pry'
 class PageController < ApplicationController
   def index
     @image = Image.new
