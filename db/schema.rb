@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20160116051825) do
   create_table "images", force: :cascade do |t|
     t.string   "image"
     t.string   "url"
+    t.text     "face"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

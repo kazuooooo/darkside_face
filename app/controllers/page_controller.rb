@@ -21,6 +21,7 @@ class PageController < ApplicationController
       @res = http_client.post(URI.parse(url), body, { 'Authorization' => 'Client-ID ' + "87dedca5a13015e" })
       result_hash = JSON.load(@res.body)
       @image.url = result_hash['data']['link']
+      @image.face = face_detect(@image.url)
       @image.save
     end
     redirect_to "/view/#{@image.id}"

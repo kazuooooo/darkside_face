@@ -2,5 +2,6 @@
 <div id="container">
   <p>URL: http://localhost:3000<%=@image.image_url%></p>
   <p>URL: <%=@image.url%></p>
+  <p><%= @image.face %></p>
   <%= image_tag @image.image_url%>
 </div>

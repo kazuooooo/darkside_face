@@ -15,37 +15,37 @@
     <h1>ダークサイド〜闇の訪れ〜</h1>
     <div id="container">
       <form action="view.html">
-      <input type="file" name="upload">
+      <input type="file" name="upload" class="img">
       <input type="submit" value="送信">
       </form>
     </div>
     <script>
       $(function(){
         $("form").submit(function(){
-          var key = "43cf7fd9259bbe005293d2f5496b52693f614c62";
+          var key = "23c519eb319591ea0a2aacc3591986abb2c31bc3";
           $("#container").css("display", "none");
           $("#image-container").css("display", "block");
-          var img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAAMFBMVEX////7+/vr6+vNzc2qqqplywBWrQD/Y5T/JTf+AADmAABeeEQvNydqAAAGBAMAAAGoF14oAAAEBUlEQVR42u2WTUwUVxzA/2925LIojsyqCLtMqSQeFJeFROPHstjdNkZdkaiX9mRTovYgSYNFE43Rg5IeNG5SqyaVcGzXkvTm7hZWq9bKriAYYzSLBI3WAplp0jY2kV3fzPuYGcBxD/bmO0zevPeb//f7v0FQ5EDvwf8LFG89ixYDol9Wo+smKal2sHF6kM6q7qbE5tY03d7SHR6ygiuvwY1txkzIlPaD3NQ4Zryk/PCP1wKibBlI97dq+idXUxqgcEkVnruS/smRpuWaCbrHU5pc/wyTQsata0U77wVBTlRP9UNkT9oE61K9AHL9VERbeTVurMjNm54mqrFw8CwKmWBfpf6V2Dx/TdxN3YjMf2JwIEZ8JnjnEbEjvLAQZ1EKlxkciJ9UcdD1Z5ztDmgsgPIrMkWtMgfd41xOYXZOIjUcLB3tdchypHWIgb5k2gH0nE0zMHjRCRTLWxgY/VQrDuybcAQ/DDEwmwEn8COlSDBcTUE0GXcEjRzqoDDhDH7sfccg2szAt9hogjBFQFRmDyd9N1VTEFegXXKEVKQFJHEUd0DSKhLthIm0HSQpnNdCNizgq147GP0m7QTygNMye6NqM9ekwlG4kLI5I4cMZ+bVhMA8MwX1rw9oIjakAYX6jXlBRRJ4BF6PwmRSfQyLFhJwWy/IG8khKuirljODG0DfGAd3qCBNEol5vCqFAxqYLeUyB0H2A2Q0DspRD3BQfJEc5KBl6KprG6pNEPqqfkKzOQBsha2bQeVw6g3nSySaGYgb99ylhsLDLVYQ3E+oozOGHKzVbCBs+HkuUm6ivd4E0ZYeNTPTTrn51+0wA9TJgpZVLeaV1y+4yS8c64W0/AcFTBCHK/fFEMwFAmo4KRldE0ZxsF8cGbTuzYqHtOz8t6e8TMk5CcjNSC+kdcfgPyag9AoDhUQARmvAcIiAW3v0JzWJg64BJXdBQ21+/b4zwMqRW5dA2h3I7+onYJd+Y4i3FbyMxz4hxE7hS2MBdSq6Fgq6Bny/dxv6Sk76COj6Yz91ZG8dToQ7oYNCqu4QjX9FK5UoPt/PXO701mruhwcxGP2ecahzzxBtUtlzLHclsXtBA6wc+a2brlUc8TCvg5cPM7LiaOPT8Y4ub3bpAbqy+MQ18xRmvIe5nr83YXDt8Nca0/GveWniSHByybEVwx1dD1ccYB/6yF8DTaGcYLFA391o6DjjohaWfKXQ/xCWazmhPDhNbYf2WH4fse9zhRUkLwrXlUD+9iVD5HR77KWheclxkqsZ1bM+pqcWZ2xVe0zXjPb6pyO8IK1l5trcA7mLKuo48+VpQG0BuPmZeTbs9Vi+9oQyqv6Ieyou4FybU+HqRS4o+TH1VG7MvgFFjvfguwFfA4FobmCxcnTPAAAAAElFTkSuQmCC";
 
-          $.ajax({
-            url: 'https://api.imgur.com/3/image.json',
-            type: 'post',
-            headers: {
-                Authorization: 'Client-ID 87dedca5a13015e'
-            },
-            data: {
-                image: encodeURIComponent("iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="),
-                type: 'base64'
-            },
-            dataType: 'json',
-            success: function(json) {
-                console.log(json);
-            },
-            error: function(json) {
-                console.log(json);
-            }
-          });
 
+          // It is!
+          // Let's build a FormData object
+
+          var fd = new FormData();
+          fd.append("key", key);
+          fd.append("image", $(".img")); // Append the file
+          // Get your own key: http://api.imgur.com/
+
+          // Create the XHR (Cross-Domain XHR FTW!!!)
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "http://api.imgur.com/2/upload.json"); // Boooom!
+          xhr.onload = function() {
+            // Big win!
+            // The URL of the image is:
+            JSON.parse(xhr.responseText).upload.links.imgur_page;
+           }
+           // Ok, I don't handle the errors. An exercice for the reader.
+           // And now, we send the formdata
+           xhr.send(fd);
           return false;
         });
       });
