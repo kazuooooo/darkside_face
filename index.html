@@ -5,6 +5,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
     <meta content='width=device-width, initial-scale=1.0' name='viewport'>
     <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" href="main.css">
     <title>ダークサイド〜闇の訪れ〜</title>
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -12,46 +13,13 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   </head>
   <body>
-    <h1>ダークサイド〜闇の訪れ〜</h1>
     <div id="container">
-      <form action="view.html">
-      <input type="file" name="upload" class="img">
-      <input type="submit" value="送信">
-      </form>
+      <button id="button">変更</button>
+      <div id="image-container">
+        <img id="photo" />
+      </div>
     </div>
-    <script>
-      $(function(){
-        $("form").submit(function(){
-          var key = "23c519eb319591ea0a2aacc3591986abb2c31bc3";
-          $("#container").css("display", "none");
-          $("#image-container").css("display", "block");
-
-
-          // It is!
-          // Let's build a FormData object
-
-          var fd = new FormData();
-          fd.append("key", key);
-          fd.append("image", $(".img")); // Append the file
-          // Get your own key: http://api.imgur.com/
-
-          // Create the XHR (Cross-Domain XHR FTW!!!)
-          var xhr = new XMLHttpRequest();
-          xhr.open("POST", "http://api.imgur.com/2/upload.json"); // Boooom!
-          xhr.onload = function() {
-            // Big win!
-            // The URL of the image is:
-            JSON.parse(xhr.responseText).upload.links.imgur_page;
-           }
-           // Ok, I don't handle the errors. An exercice for the reader.
-           // And now, we send the formdata
-           xhr.send(fd);
-          return false;
-        });
-      });
-    </script>
-    <div id="image-container" style="display: none;">
-      <img src>
-    </div>
+    <script src="app/assets/javascripts/data.js"></script>
+    <script src="app/assets/javascripts/main.js"></script>
   </body>
 </html>
