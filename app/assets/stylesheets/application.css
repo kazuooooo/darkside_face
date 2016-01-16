@@ -18,3 +18,37 @@ body{
   background-image: url(/bg.png);
   background-repeat: no-repeat;
 }
+h1 {
+  display: none;
+}
+.button {
+  position: absolute;
+  top: 20px;
+  left: 400px;
+}
+#img {
+  width: 800px;
+  height: 500px;
+}
+.main {
+  width: 800px;
+  height: 500px;
+}
+input#upload_button {
+  padding: 10px 40px;
+  font-size: 1em;
+  background-color: #000;
+  color: #fff;
+  border-style: none;
+}
+input#submit_button {
+  padding: 5px 40px;
+  font-size: 1em;
+  background-color: #000;
+  color: #fff;
+  border-style: none;
+  border: 1px solid #fff;
+}
+input {
+  margin-bottom: 10px;
+}

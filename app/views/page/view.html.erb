@@ -1,7 +1,7 @@
 <h1>あなたのアップロードした画像</h1>
-<div id="container">
-  <p>URL: http://localhost:3000<%=@image.image_url%></p>
-  <p>URL: <%=@image.url%></p>
-  <p><%= @image.face %></p>
-  <%= image_tag @image.image_url%>
+<div id="container" class="button">
+  <!-- <p>URL: http://localhost:3000<%=@image.image_url%></p>
+  <p>URL: <%=@image.url%></p> -->
+  <!-- <p ><%= @image.face %></p> -->
+  <%= image_tag @image.image_url, :id => "img" %>
 </div>
