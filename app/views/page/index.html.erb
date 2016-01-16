@@ -1,8 +1,11 @@
 <h1>ダークサイド〜闇の訪れ〜</h1>
-<div id="container">
+<div id="container" class="button">
   <%= form_for @image, url: {action: :upload} do |f| %>
     <%= f.text_field :remote_image_url, placeholder: "URLかファイルを選択してください" %>
     <%= f.file_field :image %>
     <%= f.submit "送信" %>
   <% end %>
+  <div id="img">
+    <%= image_tag '/bg.png' %>
+  </div>
 </div>
