@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <title>ダークサイド〜闇の訪れ〜</title>
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <style>
+      body{
+        background-color: #000;
+        background-image: url(img/bg.png);
+        background-repeat: no-repeat;
+      }
+      h1 {
+        display: none;
+      }
+      .button {
+        position: absolute;
+        top: 20px;
+        left: 400px;
+      }
+    #img {
+      width: 800px;
+      height: 500px;
+    }
+    .main {
+      width: 800px;
+      height: 500px;
+    }
+    input#upload_button {
+      padding: 10px 40px;
+      font-size: 1em;
+      background-color: #000;
+      color: #fff;
+      border-style: none;
+    }
+    input#submit_button {
+      padding: 5px 40px;
+      font-size: 1em;
+      background-color: #000;
+      color: #fff;
+      border-style: none;
+      border: 1px solid #fff;
+    }
+    input {
+      margin-bottom: 10px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <h1>ダークサイド〜闇の訪れ〜</h1>
+    <div id="container" class="button">
+      <form action="view.html">
+      <input type="file" name="upload" id="upload_button">
+      <input type="submit" value="スタート" id="submit_button">
+      </form>
+      <div id="img">
+        <img src="http://fakeimg.pl/1000x600" class="main">
+      </div>
+    </div>
+  </body>
+</html>
