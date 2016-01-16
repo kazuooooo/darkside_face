@@ -57,7 +57,7 @@ function main(){
 
 $(function(){
   $("#img").bind('load', function(){
-    var data = $.parseJSON(img.attr('data-json'));
+    var data = $.parseJSON($(this).attr('data-json'));
     main(data);
   });
 });
